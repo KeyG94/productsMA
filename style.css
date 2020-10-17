@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    background-color: wheat;
+}
+
+#price{
+    max-width: 120px;
+    border: none;
+    padding: 1em;
+    margin: 1em 0;
+    outline: none;
+}
+
+#root{
+    margin: 1em auto;
+    max-width: 90vw;
+    list-style-type: none;
+}
+
+#root li{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 4px;
+    margin-top: 2px;
+}
+
+#root li:nth-child(odd){
+    background-color: lightgray
+}
+
+.loader {
+    border: 5px solid #707070;
+    border-top: 5px solid white; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2.5s linear infinite;
+    margin: 40vh auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
