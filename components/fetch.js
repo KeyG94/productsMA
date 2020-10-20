@@ -63,34 +63,24 @@ function createList(list){
                 const name = product.name;
                 const price = product.price;
 
-                while (maxPrice >= price){
+                if (maxPrice >= price){
                     output += `<li>
                                     <span class="list-name">${name} </span>
                                     <span class="list-price">${price} $</span>
                                     <i class="far fa-star" data-id="${iD}" data-name="${name}"></i>
                                 </li>`;
                 root.innerHTML = output;
-                console.log(product.id)
+                console.log(2.1)
                 }
                 
-                if (maxPrice < price){
-                    output = '<h3>No results...</h3>';
-                    root.innerHTML = output;
-                }
-
             })
-        };
-            // if (price < maxPrice){
-            //     output += `<li>
-            //                     <span class="list-name">${name} </span>
-            //                     <span class="list-price">${price} $</span>
-            //                     <i class="far fa-star" data-id="${iD}" data-name="${name}"></i>
-            //                 </li>`;
-            //     item = output;
-            // }
-        
-    })
-
+            //todo, if price is greater than maxprice, display message
+        } else if(price > maxPrice) {
+            output = '<h3>No results...</h3>';
+            root.innerHTML = output;
+        }
+        console.log(price)
+    });
 };
 
 // function createList(list) {
@@ -163,15 +153,15 @@ function createList(list){
 
 
 
-function newList(list) {
-    let output = '';
-    const wishlistButtons = document.querySelectorAll("li i");
-    console.log(wishlistButtons)
-	list.filter((item) => parseFloat(item.price) < parseFloat(searchPrice.value)).forEach((item) => {
-        const name = item.name;
-		const price = item.price;
+// function newList(list) {
+//     let output = '';
+//     const wishlistButtons = document.querySelectorAll("li i");
+//     console.log(wishlistButtons)
+// 	list.filter((item) => parseFloat(item.price) < parseFloat(searchPrice.value)).forEach((item) => {
+//         const name = item.name;
+// 		const price = item.price;
         
-		output += `<li><span class="list-name">${name} </span><span class="list-price">${price}</span><i class="far fa-star"></i></li>`;
-        console.log(wishlistButtons)
-		root.innerHTML = output;
-	})};
+// 		output += `<li><span class="list-name">${name} </span><span class="list-price">${price}</span><i class="far fa-star"></i></li>`;
+//         console.log(wishlistButtons)
+// 		root.innerHTML = output;
+// 	})};
