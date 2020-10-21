@@ -36,12 +36,11 @@ function createList(list){
     searchPrice.addEventListener("keyup", function(){
         const maxPrice = parseFloat(searchPrice.value);
         const newList = list;
-        console.log(root)
         
-
+        //if input has no value
         if (!maxPrice){
             output = '';
-            console.log(1)
+
             newList.filter((product) => {
                 const iD = product.id;
                 const name = product.name;
@@ -55,9 +54,11 @@ function createList(list){
                 root.innerHTML = output;
             });
 
-        } else if (maxPrice > 0){
+            //if input value is 0 or greater
+        } else if (maxPrice >= 0){
             output = '';
             console.log(2)
+
             newList.filter(product => {
                 const iD = product.id;
                 const name = product.name;
@@ -71,97 +72,17 @@ function createList(list){
                                 </li>`;
                 root.innerHTML = output;
                 console.log(2.1)
-                }
-                
-            })
-            //todo, if price is greater than maxprice, display message
-        } else if(price > maxPrice) {
-            output = '<h3>No results...</h3>';
-            root.innerHTML = output;
-        }
-        console.log(price)
+            }
+        })};
+        addEvent();
+        console.log('hi from inside event listener')
     });
+    console.log('hi from outside of the event listener')
+    addEvent();
+    
 };
 
-// function createList(list) {
-//     const maxPrice = parseFloat(searchPrice.value);
-//     let output = '';
-    
-// 	list.filter((item) => parseFloat(item.price) < parseFloat(searchPrice.value)).forEach((item) => {
-//         const wishlistButtons = document.querySelectorAll("li i");
-//         console.log(wishlistButtons)
-//         callButtonEvent(wishlistButtons);
-//         const name = item.name;
-//         const price = item.price;
-//         const iD = item.id;
-        
-// 		output += `<li>
-//                         <span class="list-name">${name} </span>
-//                         <span class="list-price">${price} $</span>
-//                         <i class="far fa-star" data-id="${iD}" data-name="${name}"></i>
-//                     </li>`;
-//         root.innerHTML = output;
-
-//         searchPrice.addEventListener('keyup', function() {
-//             if (price <= maxPrice) {
-//                 output += `<li>
-//                                 <span class="list-name">${name} </span>
-//                                 <span class="list-price">${price} $</span>
-//                                 <i class="far fa-star" data-id="${iD}" data-name="${name}"></i>
-//                             </li>`;
-//                 console.log('maxprice higher')
-//             } else {
-//                 output = `<h3>No Result..</h3>`;
-//                 root.innerHTML = output;
-//                 console.log('failed');
-//             }
-        
-    
-//     // list.forEach((id) => {
-//     //     const price = parseFloat(id.price);
-//     //     const name = id.name;
-//     //     const iD = id.id
-        
-//     //     console.log(price)
-//     //     console.log(maxPrice)
-//     //     if (!maxPrice || isNaN(maxPrice)) {
-//     //         output +=`  <li>
-//     //                         <span class="list-name">${name} </span>
-//     //                         <span class="list-price">${price} $</span>
-//     //                         <i class="far fa-star" data-id="${iD}" data-name="${name}"></i>
-//     //                     </li>`;
-
-
-//     //         root.innerHTML = output;
-//     //         console.log('output all')
-//     //     } else if (maxPrice){
-
-    
-//     //         const wishlistButtons = document.querySelectorAll("li i");
-//     //         callButtonEvent(wishlistButtons);
-        
-//     //             //is this needed?
-//     //             // newList(list);
-//     //         });
-
-//     //     }
-            
-//     // });
-    
-//     })}
-// )};
-
-
-
-// function newList(list) {
-//     let output = '';
-//     const wishlistButtons = document.querySelectorAll("li i");
-//     console.log(wishlistButtons)
-// 	list.filter((item) => parseFloat(item.price) < parseFloat(searchPrice.value)).forEach((item) => {
-//         const name = item.name;
-// 		const price = item.price;
-        
-// 		output += `<li><span class="list-name">${name} </span><span class="list-price">${price}</span><i class="far fa-star"></i></li>`;
-//         console.log(wishlistButtons)
-// 		root.innerHTML = output;
-// 	})};
+function addEvent(){
+    const wishlistbutton = document.querySelectorAll('li i');
+    callButtonEvent(wishlistbutton);
+}
