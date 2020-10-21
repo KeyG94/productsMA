@@ -42,20 +42,21 @@ a:hover{
     outline: none;
 }
 
-#root{
+#root #wishlist{
     margin: 1em auto;
     max-width: 90vw;
     list-style-type: none;
 }
 
-#root li{
+#root li, #wishlist li{
     display: flex;
     justify-content: space-between;
     padding: 8px 4px;
     margin-top: 2px;
 }
 
-#root li:nth-child(odd){
+#root li:nth-child(odd),
+#wishlist li:nth-child(odd){
     background-color: lightgray
 }
 

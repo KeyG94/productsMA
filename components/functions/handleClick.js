@@ -1,40 +1,36 @@
-import {listKey} from "../keys.js";
+import { listKey } from '../keys.js';
 
-export default function callButtonEvent(click){
-    click.forEach(item =>{
-        item.addEventListener("click", handleClick);
-    });
-};
+export default function callButtonEvent(click) {
+	click.forEach((item) => {
+		item.addEventListener('click', handleClick);
+	});
+}
 
-function handleClick(){
-    this.classList.toggle("fa")
-    this.classList.toggle("far")
+export const isInStorage = (id) => !!retrieveList().find((item) => item.id == id);
 
-    const id = this.dataset.id;
-    const name = this.dataset.name;
-    const currentList = retrieveList()
-    const trackStorage = currentList.find(wishlist => wishlist.id === id)
-    
-    if(!trackStorage){
-        const product = {id, name};
-        currentList.push(product)
-        saveList(currentList);
-    } else {
-        const newList = currentList.filter(wishlist => wishlist.id !== id);
-        saveList(newList);
-    }
-};
+function handleClick() {
+	this.classList.toggle('fa');
+	this.classList.toggle('far');
 
-function retrieveList(){
-    const wishlist = localStorage.getItem(listKey);
+    const { id, name, price } = this.dataset;
+    console.log(price)
+	const currentList = retrieveList();
 
-    if (!wishlist){
-        return [];
-    } else {
-        return JSON.parse(wishlist);
-    }
-};
+	if (!isInStorage(id)) {
+		const product = { id, name, price };
+		currentList.push(product);
+		saveList(currentList);
+	} else {
+		const newList = currentList.filter((wishlist) => wishlist.id !== id);
+		saveList(newList);
+	}
+}
 
-function saveList(wishlist){
-    localStorage.setItem(listKey, JSON.stringify(wishlist))
+export function retrieveList() {
+	const wishlist = localStorage.getItem(listKey);
+	return wishlist ? JSON.parse(wishlist) : [];
+}
+
+function saveList(wishlist) {
+	localStorage.setItem(listKey, JSON.stringify(wishlist));
 }
