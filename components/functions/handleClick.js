@@ -12,8 +12,8 @@ function handleClick() {
 	this.classList.toggle('fa');
 	this.classList.toggle('far');
 
-    const { id, name, price } = this.dataset;
-    console.log(price)
+	const { id, name, price } = this.dataset;
+	console.log(price);
 	const currentList = retrieveList();
 
 	if (!isInStorage(id)) {
